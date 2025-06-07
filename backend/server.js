@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URL;
 
 // Middleware
 app.use(express.json()); // For parsing application/json (body parser)
@@ -15,7 +15,7 @@ app.use(cors()); // Enable CORS for all origins (important for frontend to conne
 // Database Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URI);
+    await mongoose.connect(MONGO_URL);
     console.log('MongoDB Connected successfully!');
   } catch (err) {
     console.error('MongoDB connection error:', err.message);
